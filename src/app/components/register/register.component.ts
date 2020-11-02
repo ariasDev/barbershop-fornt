@@ -8,28 +8,38 @@ import { HttpClientService } from '../../services/http-client.service'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit, OnDestroy{
-
+  
   checkoutForm: FormGroup;
   private suscribePost: Subscription;
+  public equal: boolean;
 
   constructor(private formBuilder: FormBuilder, private httpClientService: HttpClientService) {
     this.checkoutForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.minLength(4)]),
       password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      validatePassword: new FormControl('', [Validators.required, Validators.minLength(5)]),
       fullname: new FormControl('', [Validators.required, Validators.minLength(4)]),
       address: new FormControl('', [Validators.required, Validators.minLength(4)])
     });
+  }
+
+  checkPassword =(password, validatePassword)=>{
+    return password === validatePassword ? true : false
   }
 
   ngOnInit(): void {
   }
 
   onSubmit(userData): void {
-    console.log('---Data: ', userData);
-    if (userData.email && userData.password) {
+    console.log('---Data: ', userData);    
+    
+    if (userData.email && userData.password && userData.validatePassword && userData.fullname) {
+      if(this.checkPassword(userData.password,userData.validatePassword)){      
       this.suscribePost = this.httpClientService.registry(userData).subscribe(response => {
         console.log('RESPUESTA DEL BACK: ', response);
-      })
+      })} else{
+        alert('El campo contraseña y confirmar contraseña deben ser iguales')
+      }
     } else {
       alert('Todos los campos deben estar Diligenciados')
     }
