@@ -1,9 +1,9 @@
 <div class="login-component-container">
     <div class="title-container">
-        <h1 class="title">Registrate</h1>
+        <h1 class="title">Crea una cuenta</h1>
     </div>
     <div class="form-container">
-        <div class="card">
+        <div class="card col-md-4">
             <div class="card-body">
                 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
                     <div class="form-group ">
@@ -23,16 +23,16 @@
                         <input id="validatePassword" type="password" class="form-control" formControlName="validatePassword">
                     </div>                  
                     <div class="form-group ">
-                        <label for="address">Direccion</label>
+                        <label for="address">Dirección</label>
                         <input id="address" type="text" class="form-control" formControlName="address">
                     </div>
                     <div class="buttons-container ">
-                        <button  type="submit " class="btn btn-dark ">Registrarme</button>
-                    </div>
-                    <div class="buttons-container ">
-                        <button  class="button-registrar ">Ya estas registrado? Ingresa aqui</button>
-                    </div>
+                        <button  type="submit " class="btn-block btn-dark ">Registrarme</button>
+                    </div>                    
                 </form>
+                <div class="buttons-container">
+                    <button (click)="OnRedirect()" class="button-registrar ">Iniciar sesión con una cuenta existente</button>
+                </div>
             </div>
         </div>
     </div>

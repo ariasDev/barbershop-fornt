@@ -2,25 +2,22 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { HttpClientService } from '../../services/http-client.service'
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent {
 
   checkoutForm: FormGroup;
   private suscribePost: Subscription;
 
-  constructor(private formBuilder: FormBuilder, private httpClientService: HttpClientService) {
+  constructor(private formBuilder: FormBuilder, private httpClientService: HttpClientService,private router: Router) {
     this.checkoutForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.minLength(4)]),
       password: new FormControl('', [Validators.required, Validators.minLength(5)])
     });
-  }
-
-  ngOnInit(): void {
   }
 
   onSubmit(userData): void {
@@ -38,8 +35,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   get email() { return this.checkoutForm.get('email') }
   get password() { return this.checkoutForm.get('password') }
 
-  ngOnDestroy() {
-    this.suscribePost.unsubscribe()
+  OnRedirect(){
+    this.router.navigate(["/register"])
   }
 
 }
