@@ -9,7 +9,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent {
 
   checkoutForm: FormGroup;
   private suscribePost: Subscription;
@@ -22,9 +22,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: new FormControl('', [Validators.required, Validators.minLength(4)]),
       password: new FormControl('', [Validators.required, Validators.minLength(5)])
     });
-  }
-
-  ngOnInit(): void {
   }
 
   onSubmit(userData): void {
@@ -43,8 +40,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   get email() { return this.checkoutForm.get('email') }
   get password() { return this.checkoutForm.get('password') }
 
-  ngOnDestroy() {
-    this.suscribePost.unsubscribe()
+  OnRedirect(){
+    this.router.navigate(["/register"])
   }
 
  name = (password, passwordConfirmation) => {
