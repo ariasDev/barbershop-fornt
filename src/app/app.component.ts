@@ -24,8 +24,16 @@ export class AppComponent {
     return localStorage.getItem("userType")==="admin" ? true : false;
   }
 
-  currentUser(): boolean {    
-    return localStorage.getItem("userType") != null ? true : false;
+  currentUser(): boolean {
+    if(localStorage.getItem("userType") === null 
+    || localStorage.getItem("userType") === 'null'
+    || localStorage.getItem("userType") === undefined ){
+      console.log(false)
+      return false;
+    }else{
+      console.log(true)
+      return true;
+    }  
   }
 
 }
