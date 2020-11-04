@@ -9,4 +9,8 @@ export class HomeComponent {
 
   constructor() { }
 
+  validateUserType(): boolean {
+    return localStorage.getItem("userType")==="admin" ? true : false;
+  }
+
 }

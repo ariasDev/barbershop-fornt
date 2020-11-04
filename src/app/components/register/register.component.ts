@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs';
 import { HttpClientService } from '../../services/http-client.service'
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -33,7 +34,8 @@ export class RegisterComponent {
     
     if (userData.email && userData.password && userData.validatePassword && userData.fullname) {
       if(this.checkPassword(userData.password,userData.validatePassword)){ 
-        userData.typeUser = "client"     
+        userData.userType = "client"   
+        this.setUser(userData.userType)    
       this.suscribePost = this.httpClientService.registry(userData).subscribe(response => {
         console.log('RESPUESTA DEL BACK: ', response);
       })} else{
@@ -43,9 +45,13 @@ export class RegisterComponent {
       alert('Todos los campos deben estar Diligenciados')
     }
   }
+  
+  setUser(userType): void {
+    localStorage.setItem("userType", userType);
+  }
 
   OnRedirect(){
-    this.router.navigate(["/"])
+    this.router.navigate(["/login"])
   }
 
 }
