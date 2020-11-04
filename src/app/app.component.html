@@ -1,6 +1,42 @@
 <div class="app-component-conatiner">
-
+<!-- Start header -->
+<header class="top-navbar">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container">
+			<a class="navbar-brand" href="">
+				<img src="../../../assets/logo.png" alt="" />
+			</a>
+			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="icon-bar top-bar"></span>
+				<span class="icon-bar middle-bar"></span>
+				<span class="icon-bar bottom-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbars-rs-food">
+				<ul class="navbar-nav ml-auto">
+                    <!--Para todos los tipos de usuarios-->
+                    <li class="nav-item active" *ngIf="!currentUser()" ><a class="nav-link" href="/">Inicio</a></li>
+                    <!--Para todos los tipos de usuarios-->
+                    <li class="nav-item active" *ngIf="currentUser()" ><a class="nav-link" href="/main">Panel</a></li>
+                    <!--Para todos los tipos de usuarios-->
+                    <li class="nav-item active" *ngIf="currentUser()"><a class="nav-link" href="">Servicios</a></li>
+                    <!--Para los clientes-->
+                    <li class="nav-item active"><a class="nav-link" href="/main">Reservas</a></li>
+                    <!--Para los clientes-->
+                    <li class="nav-item active"><a class="nav-link" href="/main">Historial de citas</a></li>
+                    <!--Para todos los tipos de usuarios-->
+                    <li class="nav-item active" ><a *ngIf="validateUserType()" class="nav-link" href="/create-barber">Crear Barbero</a></li>         
+                    <!--Para todos los tipos de usuarios-->
+                    <li class="nav-item active" ><a *ngIf="!currentUser()" class="nav-link" href="/register">Registrate</a></li>
+                    <!--Para todos los tipos de usuarios-->
+                    <li class="nav-item active" ><a *ngIf="!currentUser()" class="nav-link" href="/login">Inicia sesión</a></li>
+                    <!--Para todos los tipos de usuarios-->
+                    <li class="nav-item active" ><a *ngIf="currentUser()" (click)="logout()" class="nav-link" href="/">Salir 🏃‍♂</a></li> 
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+<!-- End header -->
     <router-outlet>
     </router-outlet>
-
 </div>
