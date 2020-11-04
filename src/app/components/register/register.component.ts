@@ -44,7 +44,7 @@ export class RegisterComponent {
   }
 
   OnRedirect(){
-    this.router.navigate(["/"])
+    this.router.navigate(["/login"])
   }
 
 }
