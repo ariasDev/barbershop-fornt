@@ -34,8 +34,7 @@ export class RegisterComponent {
     
     if (userData.email && userData.password && userData.validatePassword && userData.fullname) {
       if(this.checkPassword(userData.password,userData.validatePassword)){ 
-        userData.userType = "client"   
-        this.setUser(userData.userType)    
+        userData.userType = "client"    
       this.suscribePost = this.httpClientService.registry(userData).subscribe(response => {
         console.log('RESPUESTA DEL BACK: ', response);
         this.router.navigate(["/login"])
@@ -45,10 +44,6 @@ export class RegisterComponent {
     } else {
       alert('Todos los campos deben estar Diligenciados')
     }
-  }
-  
-  setUser(userType): void {
-    localStorage.setItem("userType", userType);
   }
 
   OnRedirect(){

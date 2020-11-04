@@ -35,7 +35,6 @@ export class CreateBarberComponent implements OnInit {
     if (userData.email && userData.password && userData.validatePassword && userData.fullname) {
       if(this.checkPassword(userData.password,userData.validatePassword)){ 
         userData.userType = "barber"
-        this.setUser(userData.userType)   
       this.suscribePost = this.httpClientService.registry(userData).subscribe(response => {
         console.log('RESPUESTA DEL BACK: ', response);
       })} else{
@@ -44,10 +43,6 @@ export class CreateBarberComponent implements OnInit {
     } else {
       alert('Todos los campos deben estar Diligenciados')
     }
-  }
-
-  setUser(userType): void {
-    localStorage.setItem("userType", userType);
   }
 
   OnRedirect(){

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs';
 import { HttpClientService } from '../../services/http-client.service'
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -27,8 +28,10 @@ export class LoginComponent {
   onSubmit(userData): void {
     console.log('entra en el onSubmit');
     console.log('---Data: ', userData);
-    if (userData.email && userData.password) {
+    if (userData.email && userData.password) {         
       this.suscribePost = this.httpClientService.login(userData).subscribe(response => {
+        console.log(response.toString)
+        this.setUser(userData.userData.userType)
         console.log('RESPUESTA DEL BACK: ', response);
         this.router.navigate(['/main']);
       })
@@ -42,6 +45,10 @@ export class LoginComponent {
 
   OnRedirect(){
     this.router.navigate(["/register"])
+  }
+  
+  setUser(userType): void {
+    localStorage.setItem("userType", userType);
   }
 
  name = (password, passwordConfirmation) => {
