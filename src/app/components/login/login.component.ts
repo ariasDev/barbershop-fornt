@@ -25,16 +25,36 @@ export class LoginComponent {
     });
   }
 
-  onSubmit(userData): void {
+  async onSubmit(userData) {
     console.log('entra en el onSubmit');
     console.log('---Data: ', userData);
-    if (userData.email && userData.password) {         
-      this.suscribePost = this.httpClientService.login(userData).subscribe(response => {
-        console.log(response.toString)
-        this.setUser(userData.userData.userType)
-        console.log('RESPUESTA DEL BACK: ', response);
-        this.router.navigate(['/main']);
+    if (userData.email && userData.password) {
+      let url = `http://localhost:3001/login`;
+      let response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          "email": userData.email,
+          "password": userData.password
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
+        .then(res => res.json())
+        .catch(error => {
+          console.log('error', error);
+
+        })
+        .then(response => {
+           console.log('response', response); 
+           if(response.error){
+            alert(response.errorDescription)
+           }
+           console.log(response.userData.userType)
+           localStorage.setItem("userType", response.userData.userType)       
+           this.router.navigate(["/main"])
+          }
+        );
     } else {
       alert('Todos los campos deben estar Diligenciados')
     }
@@ -46,10 +66,7 @@ export class LoginComponent {
   OnRedirect(){
     this.router.navigate(["/register"])
   }
-  
-  setUser(userType): void {
-    localStorage.setItem("userType", userType);
-  }
+
 
  name = (password, passwordConfirmation) => {
   return password === passwordConfirmation ?  true : false
