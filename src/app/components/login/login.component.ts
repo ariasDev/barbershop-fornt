@@ -30,7 +30,7 @@ export class LoginComponent {
     if (userData.email && userData.password) {
       this.suscribePost = this.httpClientService.login(userData).subscribe(response => {
         console.log('RESPUESTA DEL BACK: ', response);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/main']);
       })
     } else {
       alert('Todos los campos deben estar Diligenciados')

@@ -35,6 +35,7 @@ export class RegisterComponent {
       if(this.checkPassword(userData.password,userData.validatePassword)){      
       this.suscribePost = this.httpClientService.registry(userData).subscribe(response => {
         console.log('RESPUESTA DEL BACK: ', response);
+        this.router.navigate(["/login"])
       })} else{
         alert('El campo contraseña y confirmar contraseña deben ser iguales')
       }
