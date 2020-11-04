@@ -4,12 +4,17 @@ import { CreateBarberComponent } from './components/create-barber/create-barber.
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
   { path: '',   component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'create-barber', component: CreateBarberComponent }
+
+  { path: 'create-barber', component: CreateBarberComponent },
+
+  { path: 'main', component: MainComponent }
+
 ];
 
 @NgModule({
