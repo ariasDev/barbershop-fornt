@@ -18,13 +18,13 @@
                                     <th>Estado</th>
                                 </tr>
                                 <tr *ngFor="let item of data" class="contenido">
-                                    <td>{{item.idReserva}}</td>
-                                    <td>{{item.description}}</td>
-                                    <td>{{item.client}}</td>
-                                    <td>{{item.barber}}</td>
-                                    <td>{{item.date}}</td>
-                                    <td>{{item.state}}</td>
-                                    <td><button class="boton" (click)="changeState(item)">Realizado</button></td>
+                                    <td *ngIf="item.state !== 'done'">{{item.idReserva}}</td>
+                                    <td *ngIf="item.state !== 'done'">{{item.description}}</td>
+                                    <td *ngIf="item.state !== 'done'">{{item.client}}</td>
+                                    <td *ngIf="item.state !== 'done'">{{item.barber}}</td>
+                                    <td *ngIf="item.state !== 'done'">{{item.date}}</td>
+                                    <td *ngIf="item.state !== 'done'">{{item.state}}</td>
+                                    <td *ngIf="item.state !== 'done'"><button class="boton " (click)="changeState(item) ">Realizado</button></td>
                                 </tr>
                             </table>
                         </div>
@@ -36,15 +36,15 @@
 </div>
 <!-- End presentacion-->
 <!-- Start copyrights -->
-<div class="copyrights">
-    <div class="container">
-        <div class="footer-distributed">
-            <div class="footer-left">
-                <p class="footer-links">
-                    <a href="#">Home</a>
-                    <a href="#">Contact</a>
+<div class="copyrights ">
+    <div class="container ">
+        <div class="footer-distributed ">
+            <div class="footer-left ">
+                <p class="footer-links ">
+                    <a href="# ">Home</a>
+                    <a href="# ">Contact</a>
                 </p>
-                <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">StyleBarber</a> Design By : <a href="https://html.design/">html design</a></p>
+                <p class="footer-company-name ">All Rights Reserved. &copy; 2018 <a href="# ">StyleBarber</a> Design By : <a href="https://html.design/ ">html design</a></p>
             </div>
         </div>
     </div>

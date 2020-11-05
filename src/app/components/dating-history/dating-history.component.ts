@@ -31,9 +31,33 @@ export class DatingHistoryComponent implements OnInit {
       });
   }
 
-  changeState(item)
-  {
+  async changeState(item){
+    let url = `http://localhost:3001/updateState`;
+      let response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          "idReserva": item.idReserva
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => res.json())
+        .catch(error => {
+          console.log('error', error);
 
+        })
+        .then(response => {
+           console.log('response', response); 
+           if(response.error){
+            alert(response.errorDescription)
+           }else{
+             console.log('se cambió el estado ');
+             location.reload()
+           }
+           
+          }
+        );
   }
 
 }
