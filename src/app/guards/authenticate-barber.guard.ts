@@ -22,7 +22,7 @@ export class AuthenticateGuardBarber implements CanActivate {
     if(this.currentUser()){
       return true;
     }else{
-      this.router.navigate(['/']);
+      this.router.navigate(['/reserve']);
       return false;
     }
   }

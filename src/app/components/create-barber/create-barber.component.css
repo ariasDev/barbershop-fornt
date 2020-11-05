@@ -17,13 +17,13 @@
 }
 
 .title {
-    color: white;
+    color: black;
     font-family: 'Lobster', cursive;
-    font-size: 60px;
+    font-size: 40px;
 }
 
 .form-container {
-    height: 90%;
+    height: 70%;
     display: flex;
     justify-content: center;
     align-items: center;

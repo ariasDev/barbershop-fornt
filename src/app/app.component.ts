@@ -13,7 +13,8 @@ export class AppComponent {
   }
   
   logout(){
-    localStorage.setItem("userType",null) 
+    localStorage.setItem("userType",null)
+    localStorage.setItem("email",null) 
   }
 
   OnRedirect(){

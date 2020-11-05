@@ -19,7 +19,7 @@
                     <!--Para todos los tipos de usuarios-->
                     <li class="nav-item active" *ngIf="!currentUser()" ><a class="nav-link" href="/">Inicio</a></li>
                     <!--Para todos los tipos de usuarios-->
-                    <li class="nav-item active" *ngIf="currentUser()" ><a class="nav-link" href="/main">Panel</a></li>
+                    <li class="nav-item active" *ngIf="currentUser()" ><a class="nav-link" href="/main">Mi usuario</a></li>
                     <!--Para los clientes-->
                     <li class="nav-item active" *ngIf="currentUser()"><a class="nav-link" href="/reserve">Crear Reservas</a></li>
                     <!--Para los clientes-->
@@ -40,4 +40,20 @@
 <!-- End header -->
     <router-outlet>
     </router-outlet>
+
+<!-- Start copyrights -->
+<div class="copyrights">
+   <div class="container">
+      <div class="footer-distributed">
+         <div class="footer-left">
+            <p class="footer-links">
+               <a href="#">Home</a>
+               <a href="#">Contact</a>
+            </p>
+            <p class="footer-company-name">All Rights Reserved. &copy; 2020 <a href="#">StyleBarber</a></p>
+         </div>
+      </div>
+   </div><!-- end container -->
+</div>
+<!-- End copyrights -->
 </div>
