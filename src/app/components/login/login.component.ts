@@ -51,7 +51,8 @@ export class LoginComponent {
             alert(response.errorDescription)
            }
            console.log(response.userData.userType)
-           localStorage.setItem("userType", response.userData.userType)       
+           localStorage.setItem("userType", response.userData.userType)
+           localStorage.setItem("email", response.userData.userEmail)          
            this.router.navigate(["/main"])
           }
         );
