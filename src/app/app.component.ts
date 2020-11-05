@@ -28,10 +28,8 @@ export class AppComponent {
     if(localStorage.getItem("userType") === null 
     || localStorage.getItem("userType") === 'null'
     || localStorage.getItem("userType") === undefined ){
-      console.log(false)
       return false;
     }else{
-      console.log(true)
       return true;
     }  
   }

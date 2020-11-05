@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CreateBarberComponent } from './components/create-barber/create-barber.component';
 
 import { MainComponent } from './components/main/main.component';
+import { DatingHistoryComponent } from './components/dating-history/dating-history.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MainComponent } from './components/main/main.component';
     RegisterComponent,
     HomeComponent,
     CreateBarberComponent,
-    MainComponent
+    MainComponent,
+    DatingHistoryComponent
   ],
   imports: [
     BrowserModule,

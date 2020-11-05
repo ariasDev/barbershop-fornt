@@ -16,4 +16,8 @@ export class HttpClientService {
   public registry(body) {
     return this.http.post(`${this.URL_BASE}/registry`, body).pipe(map(data=>data));
   }
+
+  public getAllDates() {
+    return this.http.get(`${this.URL_BASE}/getReservas`).pipe(map(data=>data));
+  }
 }

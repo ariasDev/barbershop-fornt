@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MainComponent } from './components/main/main.component';
 import { AuthenticateGuard } from './guards/authenticate.guard';
+import { DatingHistoryComponent } from './components/dating-history/dating-history.component';
 
 const routes: Routes = [
   { path: '',   component: HomeComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
 
   { path: 'create-barber', component: CreateBarberComponent,canActivate:[AuthenticateGuard] },
 
-  { path: 'main', component: MainComponent,canActivate:[AuthenticateGuard] }
+  { path: 'main', component: MainComponent,canActivate:[AuthenticateGuard] },
+  { path: 'dating-history', component: DatingHistoryComponent,canActivate:[AuthenticateGuard] }
 
 ];
 
