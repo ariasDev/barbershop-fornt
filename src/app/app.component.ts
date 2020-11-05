@@ -24,6 +24,15 @@ export class AppComponent {
     return localStorage.getItem("userType")==="admin" ? true : false;
   }
 
+  validateUserTypeBarber(): boolean {
+    if(localStorage.getItem("userType") === "barber"
+    || localStorage.getItem("userType") === "admin"){
+      return true;
+    }else{ 
+      return false;
+    } 
+  }
+
   currentUser(): boolean {
     if(localStorage.getItem("userType") === null 
     || localStorage.getItem("userType") === 'null'

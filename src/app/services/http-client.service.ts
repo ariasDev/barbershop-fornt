@@ -20,4 +20,9 @@ export class HttpClientService {
   public getAllDates() {
     return this.http.get(`${this.URL_BASE}/getReservas`).pipe(map(data=>data));
   }
+
+  public newReserve(body) {
+    return this.http.post(`${this.URL_BASE}/newReserva`,body).pipe(map(data=>data));
+  }
+  
 }
