@@ -7,10 +7,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent {
+export class MainComponent implements OnInit{
   
   checkoutForm: FormGroup;
   public data: any;
+
 
   constructor(private formBuilder: FormBuilder,private router: Router ) {
     this.checkoutForm = this.formBuilder.group({
@@ -19,15 +20,23 @@ export class MainComponent {
       password: new FormControl('', [Validators.required, Validators.minLength(5)])
     });
     this.checkoutForm.get('email').setValue( localStorage.getItem("email"))
+
   }
 
-  async getUsers() {
-    await fetch('http://localhost:3001/getUser')
+  ngOnInit(){
+    this.getUser();
+  }
+
+  async getUser() {
+    await fetch('http://localhost:3001/getUser?email='+ localStorage.getItem('email') )
      .then(response => response.json())
      .then(data => {
        console.log('data', data);
-       this.data = data;
+       this.data = data;   
      });
+     for( var x in this.data){
+       console.log(x)
+     }
  }
 
   async onSubmit(userData) {
