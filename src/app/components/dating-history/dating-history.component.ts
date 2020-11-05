@@ -12,48 +12,32 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 })
 export class DatingHistoryComponent implements OnInit {
 
-  checkoutForm: FormGroup;
-  private suscribePost: Subscription;
-  public equal: boolean;
-  private dates: dateInterface ={
-    _id:"01",
-    idReserva:"32156",
-    description:"corte",
-    client:"Alejo",
-    barber:"Juanpa",
-    date:"Hoy",
-    state:"Pendiente",
-    __v:"0",
-  }
-  private array
-  public ar = new Array()
-  
-  public anny
-  public data
-  constructor(private formBuilder: FormBuilder, private httpClientService: HttpClientService,private router: Router) { }
 
-  ngOnInit(): void {
-    this.getAllDates()
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
+
+  public data: any;
+
+  ngOnInit() {
+    console.log('entra en el onInit');
+    this.llamadoApi()
   }
 
-  /*onSubmit(): void {
-    this.suscribePost = this.httpClientService.getAllDates()
-    .subscribe(response=> {this.anny=response
-      console.log(this.anny)
-      console.log("respone",response)
-    })
-  }*/
-
-  clickaso(): void {
-    console.log(this.array)
-    console.log()
+  async llamadoApi() {
+     await fetch('http://localhost:3001/getReservas')
+      .then(response => response.json())
+      .then(data => {
+        console.log('data', data.reservas);
+        this.data = data.reservas;
+      });
   }
 
-  async getAllDates(){
-    if (true) {
-      let url = `http://localhost:3001/getReservas`;
+  async changeState(item){
+    let url = `http://localhost:3001/updateState`;
       let response = await fetch(url, {
-        method: 'GET',        
+        method: 'POST',
+        body: JSON.stringify({
+          "idReserva": item.idReserva
+        }),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -61,21 +45,19 @@ export class DatingHistoryComponent implements OnInit {
         .then(res => res.json())
         .catch(error => {
           console.log('error', error);
+
         })
         .then(response => {
-           console.log('response: ', response);
-           this.array = response
-           console.log(this.array)
+           console.log('response', response); 
            if(response.error){
             alert(response.errorDescription)
-           }           
+           }else{
+             console.log('se cambió el estado ');
+             location.reload()
+           }
+           
           }
         );
-    } else {
-      alert('Todos los campos deben estar Diligenciados')
-    }
   }
-//(dates: dateInterface)=>(this.dates = dates)
-
 
 }
