@@ -20,7 +20,6 @@ export class MainComponent implements OnInit{
       password: new FormControl('', [Validators.required, Validators.minLength(5)])
     });
     this.checkoutForm.get('email').setValue( localStorage.getItem("email"))
-
   }
 
   ngOnInit(){
@@ -30,25 +29,21 @@ export class MainComponent implements OnInit{
   async getUser() {
     await fetch('http://localhost:3001/getUser?email='+ localStorage.getItem('email') )
      .then(response => response.json())
-     .then(data => {
-       console.log('data', data);
-       this.data = data;   
+     .then(data => {            
+       this.data = data;  
      });
-     for( var x in this.data){
-       console.log(x)
-     }
+     this.checkoutForm.get('nombres').setValue(this.data.response[0].fullname)
  }
 
   async onSubmit(userData) {
     console.log('entra en el onSubmit');
     console.log('---Data: ', userData);
-    let url = `http://localhost:3001//changePassword`;
+    let url = `http://localhost:3001/updateUser`;
     let response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify({
-          "nombres": userData.nombres,
-          "email": userData.email,
-          "password": userData.password
+          "fullname": userData.nombres,
+          "email": userData.email
         }),
         headers: {
           'Content-Type': 'application/json'
@@ -64,9 +59,7 @@ export class MainComponent implements OnInit{
            if(response.error){
             alert(response.errorDescription)
            }
-           console.log(response.userData.userType)
-           localStorage.setItem("userType", response.userData.userType)       
-           this.router.navigate(["/main"])
+           alert('Se actualizo correctamente')
           }
         );
   }

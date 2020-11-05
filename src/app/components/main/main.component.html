@@ -8,15 +8,11 @@
                             <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
                                 <div class="form-group ">
                                     <label for="nombres">Nombres*</label>
-                                    <input type="text" class="form-control" value="" formControlName="nombres" aria-describedby="nombresHelp">
+                                    <input type="text" class="form-control" formControlName="nombres" aria-describedby="nombresHelp">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Correo*</label>
                                     <input type="email" class="form-control" disabled formControlName="email" aria-describedby="emailHelp ">
-                                </div>
-                                <div class="form-group ">
-                                    <label for="password">Contraseña*</label>
-                                    <input id="password" type="password" class="form-control" formControlName="password">
                                 </div>
                                 <div class="buttons-container ">
                                     <button type="submit " class="btn-block btn-dark ">Actualizar</button>
