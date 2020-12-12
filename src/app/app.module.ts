@@ -14,6 +14,7 @@ import { CreateBarberComponent } from './components/create-barber/create-barber.
 import { MainComponent } from './components/main/main.component';
 import { DatingHistoryComponent } from './components/dating-history/dating-history.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
+import { ReportComponent } from './components/report/report.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ReserveComponent } from './components/reserve/reserve.component';
     CreateBarberComponent,
     MainComponent,
     DatingHistoryComponent,
-    ReserveComponent
+    ReserveComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

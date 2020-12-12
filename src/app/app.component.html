@@ -25,7 +25,9 @@
                     <!--Para los clientes-->
                     <li class="nav-item active" *ngIf="validateUserTypeBarber()"><a class="nav-link" href="/dating-history">Historial de citas</a></li>
                     <!--Para todos los tipos de usuarios-->
-                    <li class="nav-item active" *ngIf="validateUserType()"><a class="nav-link" href="/create-barber">Crear Barbero</a></li>         
+                    <li class="nav-item active" *ngIf="validateUserType()"><a class="nav-link" href="/create-barber">Crear Barbero</a></li>
+                    <!--Para todos los tipos de usuarios-->
+                    <li class="nav-item active" *ngIf="validateUserType()"><a class="nav-link" href="/report">Generar reporte</a></li>        
                     <!--Para todos los tipos de usuarios-->
                     <li class="nav-item active" *ngIf="!currentUser()"><a class="nav-link" href="/register">Registrate</a></li>
                     <!--Para todos los tipos de usuarios-->
